@@ -45,7 +45,7 @@ namespace WhiskyReviewer.Controllers
         // GET: Whiskies/Create
         public IActionResult Create()
         {
-            ViewData["DistilleryId"] = new SelectList(_context.Distilleries, "Id", "Id");
+            ViewData["DistilleryId"] = new SelectList(_context.Distilleries, "Id", "Name");
             return View();
         }
 
@@ -62,7 +62,7 @@ namespace WhiskyReviewer.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DistilleryId"] = new SelectList(_context.Distilleries, "Id", "Id", whisky.DistilleryId);
+            ViewData["DistilleryId"] = new SelectList(_context.Distilleries, "Id", "Name", whisky.DistilleryId);
             return View(whisky);
         }
 
@@ -79,7 +79,7 @@ namespace WhiskyReviewer.Controllers
             {
                 return NotFound();
             }
-            ViewData["DistilleryId"] = new SelectList(_context.Distilleries, "Id", "Id", whisky.DistilleryId);
+            ViewData["DistilleryId"] = new SelectList(_context.Distilleries, "Id", "Name", whisky.DistilleryId);
             return View(whisky);
         }
 
@@ -115,7 +115,7 @@ namespace WhiskyReviewer.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DistilleryId"] = new SelectList(_context.Distilleries, "Id", "Id", whisky.DistilleryId);
+            ViewData["DistilleryId"] = new SelectList(_context.Distilleries, "Id", "Name", whisky.DistilleryId);
             return View(whisky);
         }
 
