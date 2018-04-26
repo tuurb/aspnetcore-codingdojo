@@ -11,9 +11,10 @@ using WhiskyReviewer.Models;
 namespace WhiskyReviewer.Migrations
 {
     [DbContext(typeof(WhiskyReviewerContext))]
-    partial class WhiskyReviewerContextModelSnapshot : ModelSnapshot
+    [Migration("20180426122206_Whisky2Whiskies")]
+    partial class Whisky2Whiskies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
