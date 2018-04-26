@@ -15,6 +15,6 @@ namespace WhiskyReviewer.Models
 
         public DbSet<Distillery> Distilleries { get; set; }
 
-        public DbSet<WhiskyReviewer.Models.Whisky> Whisky { get; set; }
+        public DbSet<Whisky> Whiskies { get; set; }
     }
 }

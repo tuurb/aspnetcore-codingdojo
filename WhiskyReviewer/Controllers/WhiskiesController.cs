@@ -21,7 +21,7 @@ namespace WhiskyReviewer.Controllers
         // GET: Whiskies
         public async Task<IActionResult> Index()
         {
-            var whiskyReviewerContext = _context.Whisky.Include(w => w.Distillery);
+            var whiskyReviewerContext = _context.Whiskies.Include(w => w.Distillery);
             return View(await whiskyReviewerContext.ToListAsync());
         }
 
@@ -33,9 +33,7 @@ namespace WhiskyReviewer.Controllers
                 return NotFound();
             }
 
-            var whisky = await _context.Whisky
-                .Include(w => w.Distillery)
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var whisky = await _context.Whiskies.Include(w => w.Distillery).SingleOrDefaultAsync(m => m.Id == id);
             if (whisky == null)
             {
                 return NotFound();
@@ -76,7 +74,7 @@ namespace WhiskyReviewer.Controllers
                 return NotFound();
             }
 
-            var whisky = await _context.Whisky.SingleOrDefaultAsync(m => m.Id == id);
+            var whisky = await _context.Whiskies.SingleOrDefaultAsync(m => m.Id == id);
             if (whisky == null)
             {
                 return NotFound();
@@ -129,7 +127,7 @@ namespace WhiskyReviewer.Controllers
                 return NotFound();
             }
 
-            var whisky = await _context.Whisky
+            var whisky = await _context.Whiskies
                 .Include(w => w.Distillery)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (whisky == null)
@@ -145,15 +143,15 @@ namespace WhiskyReviewer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var whisky = await _context.Whisky.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Whisky.Remove(whisky);
+            var whisky = await _context.Whiskies.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Whiskies.Remove(whisky);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool WhiskyExists(int id)
         {
-            return _context.Whisky.Any(e => e.Id == id);
+            return _context.Whiskies.Any(e => e.Id == id);
         }
     }
 }
